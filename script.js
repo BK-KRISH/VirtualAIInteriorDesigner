@@ -15,7 +15,7 @@ navigator.mediaDevices.getUserMedia({ video: true })
   });
 
 // Capture the photo
-captureBtn.addEventListener("click", async () => {
+captureBtn.addEventListener("click", () => {
   const context = canvas.getContext("2d");
   canvas.width = video.videoWidth;
   canvas.height = video.videoHeight;
@@ -24,36 +24,9 @@ captureBtn.addEventListener("click", async () => {
   const imageDataUrl = canvas.toDataURL("image/png");
   snapshot.src = imageDataUrl;
 
-  // Call object detection and generate suggestions
-  await detectObjects(canvas);
+  // Generate mock AI suggestions
   generateSuggestions();
 });
-
-// Load COCO-SSD Model for Object Detection
-async function loadModel() {
-  const model = await cocoSsd.load();
-  console.log("Model loaded!");
-  return model;
-}
-
-// Detect objects in the captured image
-async function detectObjects(imageElement) {
-  const model = await loadModel();
-  const predictions = await model.detect(imageElement);
-  console.log(predictions); // Log the detected objects
-
-  // Display detected furniture or objects as suggestions (for demo purposes)
-  const mockSuggestions = predictions.map(prediction => {
-    return `Consider adding a ${prediction.class} in the room.`;
-  });
-
-  suggestionList.innerHTML = "";
-  mockSuggestions.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    suggestionList.appendChild(li);
-  });
-}
 
 // Mock AI Suggestion Engine
 function generateSuggestions() {
