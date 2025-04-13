@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Virtual AI Interior Designer</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <h1>Virtual AI Interior Designer</h1>
+
+    <div class="camera">
+      <video id="video" autoplay></video>
+      <button id="captureBtn">📸 Capture Room</button>
+    </div>
+
+    <canvas id="canvas" style="display:none;"></canvas>
+
+    <div id="snapshotContainer">
+      <h2>Room Snapshot</h2>
+      <img id="snapshot" src="" alt="Room Image"/>
+    </div>
+
+    <div id="suggestions">
+      <h2>AI Suggestions</h2>
+      <ul id="suggestionList"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
